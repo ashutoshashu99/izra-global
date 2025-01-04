@@ -1,10 +1,17 @@
 import React from "react";
-import image1 from '../assets/background_01.png'
+import image1 from "../assets/background_01.png";
 function Hero() {
   return (
     <>
-      <div className="py-20  flex justify-around items-center">
-        <div className="w-2/5 p-20 ml-5">
+      <div className="py-20  flex justify-around items-center px-28 ">
+        <div className="w-2/5 p-20">
+          <div className="my-10 ml-1">
+            <div className=" text-2xl  font-light ">
+              "Prioritizing{" "}
+              <span className="text-[#2E8B57] font-medium">Excellence</span>{" "}
+              over <span className="text-[#FF7F50] font-medium">Excess</span>."
+            </div>
+          </div>
           <div className="text-5xl font-bold leading-none ">
             Bringing <span className="text-[#2F6B3C]">India's best</span> to the
             world.
@@ -21,8 +28,8 @@ function Hero() {
             Contact Us
           </button>
         </div>
-        <div className="w-3/5 mr-5">
-            <img src={image1} alt="hero"/>
+        <div className="w-3/5"> 
+          <img src={image1} alt="hero" />
         </div>
       </div>
     </>

@@ -1,15 +1,14 @@
-import React from "react";
 
 const navigation = [
+  { name: "Home", href: "#" },
   { name: "Product", href: "https://www.google.com/" },
-  { name: "Features", href: "#" },
-  { name: "Marketplace", href: "#" },
-  { name: "Company", href: "#" },
+  { name: "About us", href: "#" },
+  { name: "Raise Query", href: "#" },
 ];
 function Header() {
   return (
     <>
-      <div className="h-20 w-full flex  justify-around">
+      <div className="h-20 w-full flex justify-around">
         <div className="flex flex-row items-center gap-4">
           <svg
             version="1.0"
@@ -60,7 +59,7 @@ function Header() {
             <a
               key={item.name}
               href={item.href}
-              className="block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:bg-gray-50"
+              className="block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-[#2F6B3C]"
             >
               {item.name}
             </a>
@@ -68,7 +67,7 @@ function Header() {
         </div>
         <div className="flex flex-row items-center gap-6">
         <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
-            ashutosh@gmil.com
+            ashutosh@gmail.com
           </button>
           <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
             9971207059
