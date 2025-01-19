@@ -1,14 +1,22 @@
-
+import { React, useState } from "react";
+import { Link, NavLink } from "react-router-dom";
 const navigation = [
-  { name: "Home", href: "#" },
-  { name: "Product", href: "https://www.google.com/" },
-  { name: "About us", href: "#" },
-  { name: "Raise Query", href: "#" },
+  { name: "Home", to: "/" },
+  { name: "Product", to: "/products" },
+  { name: "About us", to: "/about" },
+  { name: "Raise Query", to: "/query" },
 ];
-function Header() {
+const Header = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <>
-      <div className="h-20 w-full flex justify-around">
+      <div className="h-20 w-full flex justify-between items-center px-4">
+        {/* Logo Section */}
         <div className="flex flex-row items-center gap-4">
           <svg
             version="1.0"
@@ -17,7 +25,7 @@ function Header() {
             height="251.000000pt"
             viewBox="0 0 300.000000 251.000000"
             preserveAspectRatio="xMidYMid meet"
-            className="w-12 h-12"
+            className="h-12 w-12"
           >
             {" "}
             <g
@@ -54,28 +62,65 @@ function Header() {
           </svg>
           <h1 className="text-xl font-light tracking-widest">IZRA GLOBAL</h1>
         </div>
-        <div className="flex flex-row items-center gap-6">
+
+        {/* Desktop Menu */}
+        <div className="hidden md:flex flex-row items-center gap-6">
           {navigation.map((item) => (
-            <a
+            <NavLink
               key={item.name}
-              href={item.href}
-              className="block rounded-lg px-3 py-2 text-base/7 font-semibold text-gray-900 hover:text-[#2F6B3C]"
+              to={item.to}
+              className={({ isActive }) =>
+                `px-4 py-2 ${
+                  isActive ? "text-[#2F6B3C]" : "text-slate-600"
+                } font-bold hover:text-[#2F6B3C] duration-300 transition-all`
+              }
             >
               {item.name}
-            </a>
+            </NavLink>
           ))}
         </div>
-        <div className="flex flex-row items-center gap-6">
-        <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
-            ashutosh@gmail.com
+
+        {/* Contact and Mobile Menu Toggle */}
+        <div className="hidden md:flex flex-row items-center gap-6">
+          <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
+            contact@izraglobal.com
           </button>
           <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
             9971207059
           </button>
         </div>
+
+        {/* Hamburger Icon (Visible on mobile screens) */}
+        <div className="md:hidden flex items-center">
+          <button onClick={toggleMenu} className="text-3xl">
+            {isMenuOpen ? "X" : "☰"}
+          </button>
+        </div>
       </div>
+
+      {/* Mobile Menu (Hidden by default, shown when the hamburger menu is toggled) */}
+      {isMenuOpen && (
+        <div className="md:hidden flex flex-col items-center bg-[#fff] p-6">
+          {navigation.map((item) => (
+            <NavLink
+              key={item.name}
+              to={item.to}
+              className="px-4 py-2 text-slate-600 font-bold hover:text-[#2F6B3C] duration-300 transition-all"
+              onClick={() => setIsMenuOpen(false)} // Close menu when an item is clicked
+            >
+              {item.name}
+            </NavLink>
+          ))}
+          <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all mt-4">
+            contact@izraglobal.com
+          </button>
+          <button className="px-8 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all mt-4">
+            9971207059
+          </button>
+        </div>
+      )}
     </>
   );
-}
+};
 
 export default Header;

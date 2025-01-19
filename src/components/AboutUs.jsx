@@ -106,7 +106,10 @@ const AboutUs = () => {
             With IZRA Global, explore the finest products from India’s farmers
             and artisans, crafted to perfection and delivered with care.
           </p>
-          <button className="mt-6 px-6 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all">
+          <button className="mt-6 px-6 py-3 bg-white border text-black rounded-full border-[#F4B400] hover:bg-[#F4B400] hover:text-white duration-300 transition-all"
+            onClick={() => {
+              window.location.href = "/products";
+            }}>
             Learn More
           </button>
         </div>
